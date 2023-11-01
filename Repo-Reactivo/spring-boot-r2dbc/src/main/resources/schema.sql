@@ -20,5 +20,9 @@ numero varchar,
 fecha_inicio varchar,
 fecha_fin varchar,
 materia_id integer,
-FOREIGN KEY (materia_id) REFERENCES materia (id)
+profesor_id integer,
+estudiante_id integer,
+FOREIGN KEY (materia_id) REFERENCES materia (id),
+FOREIGN KEY (profesor_id) REFERENCES persona (id),
+FOREIGN KEY (estudiante_id) REFERENCES persona (id)
 );

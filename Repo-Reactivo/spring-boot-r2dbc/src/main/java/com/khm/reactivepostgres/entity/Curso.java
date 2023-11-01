@@ -20,4 +20,10 @@ public class Curso {
     @Column("materia_id")
     private Long materiaId;
 
+    @Column("profesor_id")
+    private Long profesorId;
+
+    @Column("estudiante_id")
+    private Long estudianteId;
+
 }
