@@ -24,7 +24,7 @@ public class ControladorCurso {
 
     private final ICursoServicio cursoServicio;
 
-    // Crear un curso nuevo en el repo
+
     @PostMapping
     public ResponseEntity<Mono<Curso>> crearCurso(@RequestBody Curso cursoNuevo) {
         return ResponseEntity.ok(cursoServicio.crearCursoNuevo(cursoNuevo));
@@ -35,19 +35,17 @@ public class ControladorCurso {
         return ResponseEntity.ok(cursoServicio.obtenerTodoslosCursos());
     }
 
-    // Encontrar a una persona en el repo por medio de su Id
     @GetMapping("/{id}")
     public ResponseEntity<Mono<Curso>> getCurso(@PathVariable Long id) {
         return ResponseEntity.ok(cursoServicio.obtenerCursoId(id));
     }
 
-    // Borrar persona existente del repositorio por medio de su Id
+
     @DeleteMapping
     public ResponseEntity<Mono<Void>> borrarPersona(@RequestBody Curso cursoBorrar) {
         return ResponseEntity.ok(cursoServicio.borrarCursoSer(cursoBorrar));
     }
 
-    //Actualizar datos de persona en el repo
     @PutMapping
     public ResponseEntity<Mono<Curso>> updateCurso(@RequestBody Curso cursoAc) {
         return ResponseEntity.ok(cursoServicio.actualizarCursoSer(cursoAc));

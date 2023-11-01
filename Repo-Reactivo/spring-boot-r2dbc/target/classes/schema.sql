@@ -36,3 +36,15 @@ observacion varchar,
 valor numeric(3, 2),
 porcentaje numeric(4,2)
 );
+
+CREATE VIEW estudiante AS
+SELECT
+id, nombre, apellido, correo
+FROM persona
+WHERE rol = 'E';
+
+CREATE VIEW profesor AS
+SELECT
+id, nombre, apellido, correo
+FROM persona
+WHERE rol = 'P';

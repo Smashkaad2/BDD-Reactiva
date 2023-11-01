@@ -22,31 +22,29 @@ public class ControladorMateria {
 
     private final IMateriaServicio materiaServicio;
 
-    // Crear una Materia nueva en el repo
+  
     @PostMapping
     public ResponseEntity<Mono<Materia>> crearMateria(@RequestBody Materia materiaNueva) {
         return ResponseEntity.ok(materiaServicio.crearMateriaNueva(materiaNueva));
     }
 
-    // Mostrar todas las Materias en el repo
     @GetMapping
     public ResponseEntity<Flux<Materia>> getAllMaterias() {
         return ResponseEntity.ok(materiaServicio.obtenerTodasLasMaterias());
     }
 
-    // Encontrar a una persona en el repo por medio de su Id
     @GetMapping("/{id}")
     public ResponseEntity<Mono<Materia>> getMateria(@PathVariable Long id) {
         return ResponseEntity.ok(materiaServicio.obtenerMateriaId(id));
     }
 
-    // Borrar persona existente del repositorio por medio de su Id
+   
     @DeleteMapping
     public ResponseEntity<Mono<Void>> borrarPersona(@RequestBody Materia materiaBorrar) {
         return ResponseEntity.ok(materiaServicio.borrarMateriaSer(materiaBorrar));
     }
 
-    // Actualizar datos de persona en el repo
+  
     @PutMapping
     public ResponseEntity<Mono<Materia>> updateMember(@RequestBody Materia materia) {
         return ResponseEntity.ok(materiaServicio.actualizarMateriaSer(materia));
