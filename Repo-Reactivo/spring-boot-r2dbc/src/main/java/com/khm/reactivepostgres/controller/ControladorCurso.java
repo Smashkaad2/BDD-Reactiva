@@ -1,9 +1,7 @@
 package com.khm.reactivepostgres.controller;
 
 import com.khm.reactivepostgres.entity.Curso;
-import com.khm.reactivepostgres.entity.Persona;
 import com.khm.reactivepostgres.service.ICursoServicio;
-import com.khm.reactivepostgres.service.IPersonaServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -29,6 +28,29 @@ public class ControladorCurso {
     @PostMapping
     public ResponseEntity<Mono<Curso>> crearCurso(@RequestBody Curso cursoNuevo) {
         return ResponseEntity.ok(cursoServicio.crearCursoNuevo(cursoNuevo));
+    }
+
+    @GetMapping
+    public ResponseEntity<Flux<Curso>> getAllCursos() {
+        return ResponseEntity.ok(cursoServicio.obtenerTodoslosCursos());
+    }
+
+    // Encontrar a una persona en el repo por medio de su Id
+    @GetMapping("/{id}")
+    public ResponseEntity<Mono<Curso>> getCurso(@PathVariable Long id) {
+        return ResponseEntity.ok(cursoServicio.obtenerCursoId(id));
+    }
+
+    // Borrar persona existente del repositorio por medio de su Id
+    @DeleteMapping
+    public ResponseEntity<Mono<Void>> borrarPersona(@RequestBody Curso cursoBorrar) {
+        return ResponseEntity.ok(cursoServicio.borrarCursoSer(cursoBorrar));
+    }
+
+    //Actualizar datos de persona en el repo
+    @PutMapping
+    public ResponseEntity<Mono<Curso>> updateCurso(@RequestBody Curso cursoAc) {
+        return ResponseEntity.ok(cursoServicio.actualizarCursoSer(cursoAc));
     }
 
 }

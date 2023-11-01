@@ -26,3 +26,13 @@ FOREIGN KEY (materia_id) REFERENCES materia (id),
 FOREIGN KEY (profesor_id) REFERENCES persona (id),
 FOREIGN KEY (estudiante_id) REFERENCES persona (id)
 );
+
+CREATE TABLE IF NOT EXISTS nota (
+id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+materia_id integer NOT NULL,
+profesor_id integer NOT NULL,
+estudiante_id integer NOT NULL,
+observacion varchar,
+valor numeric(3, 2),
+porcentaje numeric(4,2)
+);
